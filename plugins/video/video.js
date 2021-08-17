@@ -68,6 +68,11 @@ KindEditor.plugin('video', function (K) {
                                 urlBox[0].focus();
                                 return;
                             }
+                            if (-1 === K.mediaType(url).indexOf("mp4") && -1 === K.mediaType(url).indexOf("audio") ) {
+                                alert(self.lang('invalidVideoType'));
+                                urlBox[0].focus();
+                                return;
+                            }
                             if (poster && -1 === poster.indexOf("://")) {
                                 alert(self.lang('invalidPoster'));
                                 posterBox[0].focus();
@@ -83,6 +88,7 @@ KindEditor.plugin('video', function (K) {
                                 heightBox[0].focus();
                                 return;
                             }
+
                             var attrs = {
                                 src: url,
                                 type: K.mediaType(url),
